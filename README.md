@@ -14,4 +14,4 @@ C needs to redirect every incoming tokens to contract D.
 D is doing nothing.
 
 A -> B -> C -> D will be a single transaction.
-A -> (msg.data contains `B call data` + `C call data`) -> B (executes `B call data` then sends token transaction to C with `C call data`) -> C (executes `C call data`) -> D
+A -> (msg.data contains `B call data` + `C call data`) -> B (executes `B call data` then sends token transaction to C with `C call data`) -> C (executes `C call data`) -> D (executed `D call data` but it is empty so D is doing nothing)
