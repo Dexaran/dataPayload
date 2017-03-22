@@ -16,15 +16,20 @@ contract DEXchange {
     
     mapping (address=>bool) supportedToken;
     
+    //An example of modifier similar to `payable` for Ether tx
+    //will reject every incoming unsupported token
     modifier tokenPayable {
-        if (supportedToken[msg.sender])
+        if (!supportedToken[msg.sender])
             throw;
         _;
     }
     address public owner;
     bytes4 public signer;
     
+    
+    //ERC23 based first token contract deployed on Ropsten
     address public token1Contract=0x5607bdE72CB0e4757dB2201CFC587257366B100b;
+    //ERC23 based second token contract deployed on Ropsten
     address public token2Contract=0x3Af20d9e40919B85352e6735d72a78779EC76977;
     
     uint public exchangeRate = 1;
